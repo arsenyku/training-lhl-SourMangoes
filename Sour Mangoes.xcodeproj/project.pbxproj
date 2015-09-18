@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		127F34A91BACB3DE003A7EBC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 127F34A81BACB3DE003A7EBC /* main.m */; };
-		127F34AC1BACB3DE003A7EBC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 127F34AB1BACB3DE003A7EBC /* AppDelegate.m */; };
-		127F34AF1BACB3DE003A7EBC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 127F34AE1BACB3DE003A7EBC /* ViewController.m */; };
+		127F34AC1BACB3DE003A7EBC /* SMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 127F34AB1BACB3DE003A7EBC /* SMAppDelegate.m */; };
+		127F34AF1BACB3DE003A7EBC /* SMMoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 127F34AE1BACB3DE003A7EBC /* SMMoviesViewController.m */; };
 		127F34B21BACB3DE003A7EBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 127F34B01BACB3DE003A7EBC /* Main.storyboard */; };
 		127F34B41BACB3DE003A7EBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 127F34B31BACB3DE003A7EBC /* Assets.xcassets */; };
 		127F34B71BACB3DE003A7EBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 127F34B51BACB3DE003A7EBC /* LaunchScreen.storyboard */; };
 		127F34C21BACB3DE003A7EBC /* Sour_MangoesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 127F34C11BACB3DE003A7EBC /* Sour_MangoesTests.m */; };
 		127F34CD1BACB3DE003A7EBC /* Sour_MangoesUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 127F34CC1BACB3DE003A7EBC /* Sour_MangoesUITests.m */; };
+		127F34DC1BACB5E7003A7EBC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127F34DB1BACB5E7003A7EBC /* Realm.framework */; settings = {ASSET_TAGS = (); }; };
+		127F34DE1BACB705003A7EBC /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 127F34DD1BACB705003A7EBC /* libc++.tbd */; };
+		127F34E11BACB786003A7EBC /* SMMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 127F34E01BACB786003A7EBC /* SMMovie.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,10 +40,10 @@
 /* Begin PBXFileReference section */
 		127F34A41BACB3DE003A7EBC /* Sour Mangoes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sour Mangoes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		127F34A81BACB3DE003A7EBC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		127F34AA1BACB3DE003A7EBC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		127F34AB1BACB3DE003A7EBC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		127F34AD1BACB3DE003A7EBC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		127F34AE1BACB3DE003A7EBC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		127F34AA1BACB3DE003A7EBC /* SMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAppDelegate.h; sourceTree = "<group>"; };
+		127F34AB1BACB3DE003A7EBC /* SMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAppDelegate.m; sourceTree = "<group>"; };
+		127F34AD1BACB3DE003A7EBC /* SMMoviesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMMoviesViewController.h; sourceTree = "<group>"; };
+		127F34AE1BACB3DE003A7EBC /* SMMoviesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMMoviesViewController.m; sourceTree = "<group>"; };
 		127F34B11BACB3DE003A7EBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		127F34B31BACB3DE003A7EBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		127F34B61BACB3DE003A7EBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +54,10 @@
 		127F34C81BACB3DE003A7EBC /* Sour MangoesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sour MangoesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		127F34CC1BACB3DE003A7EBC /* Sour_MangoesUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sour_MangoesUITests.m; sourceTree = "<group>"; };
 		127F34CE1BACB3DE003A7EBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		127F34DB1BACB5E7003A7EBC /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		127F34DD1BACB705003A7EBC /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		127F34DF1BACB786003A7EBC /* SMMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMovie.h; sourceTree = "<group>"; };
+		127F34E01BACB786003A7EBC /* SMMovie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMovie.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				127F34DE1BACB705003A7EBC /* libc++.tbd in Frameworks */,
+				127F34DC1BACB5E7003A7EBC /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +94,7 @@
 				127F34C01BACB3DE003A7EBC /* Sour MangoesTests */,
 				127F34CB1BACB3DE003A7EBC /* Sour MangoesUITests */,
 				127F34A51BACB3DE003A7EBC /* Products */,
+				127F34DA1BACB5E7003A7EBC /* Realm Framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,10 +111,12 @@
 		127F34A61BACB3DE003A7EBC /* Sour Mangoes */ = {
 			isa = PBXGroup;
 			children = (
-				127F34AA1BACB3DE003A7EBC /* AppDelegate.h */,
-				127F34AB1BACB3DE003A7EBC /* AppDelegate.m */,
-				127F34AD1BACB3DE003A7EBC /* ViewController.h */,
-				127F34AE1BACB3DE003A7EBC /* ViewController.m */,
+				127F34AA1BACB3DE003A7EBC /* SMAppDelegate.h */,
+				127F34AB1BACB3DE003A7EBC /* SMAppDelegate.m */,
+				127F34AD1BACB3DE003A7EBC /* SMMoviesViewController.h */,
+				127F34AE1BACB3DE003A7EBC /* SMMoviesViewController.m */,
+				127F34DF1BACB786003A7EBC /* SMMovie.h */,
+				127F34E01BACB786003A7EBC /* SMMovie.m */,
 				127F34B01BACB3DE003A7EBC /* Main.storyboard */,
 				127F34B31BACB3DE003A7EBC /* Assets.xcassets */,
 				127F34B51BACB3DE003A7EBC /* LaunchScreen.storyboard */,
@@ -138,6 +150,16 @@
 				127F34CE1BACB3DE003A7EBC /* Info.plist */,
 			);
 			path = "Sour MangoesUITests";
+			sourceTree = "<group>";
+		};
+		127F34DA1BACB5E7003A7EBC /* Realm Framework */ = {
+			isa = PBXGroup;
+			children = (
+				127F34DD1BACB705003A7EBC /* libc++.tbd */,
+				127F34DB1BACB5E7003A7EBC /* Realm.framework */,
+			);
+			name = "Realm Framework";
+			path = static;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,8 +292,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				127F34AF1BACB3DE003A7EBC /* ViewController.m in Sources */,
-				127F34AC1BACB3DE003A7EBC /* AppDelegate.m in Sources */,
+				127F34E11BACB786003A7EBC /* SMMovie.m in Sources */,
+				127F34AF1BACB3DE003A7EBC /* SMMoviesViewController.m in Sources */,
+				127F34AC1BACB3DE003A7EBC /* SMAppDelegate.m in Sources */,
 				127F34A91BACB3DE003A7EBC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,7 +434,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/static",
+				);
 				INFOPLIST_FILE = "Sour Mangoes/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "training.asu.Sour-Mangoes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -422,7 +450,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/static",
+				);
 				INFOPLIST_FILE = "Sour Mangoes/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "training.asu.Sour-Mangoes";
 				PRODUCT_NAME = "$(TARGET_NAME)";

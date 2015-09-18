@@ -6,13 +6,13 @@
 //  Copyright © 2015 asu. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "SMAppDelegate.h"
 
-@interface AppDelegate ()
+@interface SMAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation SMAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
