@@ -18,6 +18,8 @@
 		127F34DC1BACB5E7003A7EBC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 127F34DB1BACB5E7003A7EBC /* Realm.framework */; settings = {ASSET_TAGS = (); }; };
 		127F34DE1BACB705003A7EBC /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 127F34DD1BACB705003A7EBC /* libc++.tbd */; };
 		127F34E11BACB786003A7EBC /* SMMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 127F34E01BACB786003A7EBC /* SMMovie.m */; settings = {ASSET_TAGS = (); }; };
+		127F34ED1BACCAA9003A7EBC /* RottenMangoes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 127F34EB1BACCAA9003A7EBC /* RottenMangoes.storyboard */; settings = {ASSET_TAGS = (); }; };
+		127F34F01BACE5DE003A7EBC /* NSURLSession+DownloadFromAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 127F34EE1BACE5DE003A7EBC /* NSURLSession+DownloadFromAddress.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,10 @@
 		127F34DD1BACB705003A7EBC /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		127F34DF1BACB786003A7EBC /* SMMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMovie.h; sourceTree = "<group>"; };
 		127F34E01BACB786003A7EBC /* SMMovie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMovie.m; sourceTree = "<group>"; };
+		127F34EC1BACCAA9003A7EBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Sour Mangoes/Base.lproj/RottenMangoes.storyboard"; sourceTree = "<group>"; };
+		127F34EE1BACE5DE003A7EBC /* NSURLSession+DownloadFromAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+DownloadFromAddress.m"; sourceTree = "<group>"; };
+		127F34EF1BACE5DE003A7EBC /* NSURLSession+DownloadFromAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+DownloadFromAddress.h"; sourceTree = "<group>"; };
+		127F34F21BACE6E9003A7EBC /* SMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +100,7 @@
 				127F34C01BACB3DE003A7EBC /* Sour MangoesTests */,
 				127F34CB1BACB3DE003A7EBC /* Sour MangoesUITests */,
 				127F34A51BACB3DE003A7EBC /* Products */,
-				127F34DA1BACB5E7003A7EBC /* Realm Framework */,
+				127F34DA1BACB5E7003A7EBC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,13 +117,17 @@
 		127F34A61BACB3DE003A7EBC /* Sour Mangoes */ = {
 			isa = PBXGroup;
 			children = (
+				127F34F21BACE6E9003A7EBC /* SMConstants.h */,
 				127F34AA1BACB3DE003A7EBC /* SMAppDelegate.h */,
 				127F34AB1BACB3DE003A7EBC /* SMAppDelegate.m */,
 				127F34AD1BACB3DE003A7EBC /* SMMoviesViewController.h */,
 				127F34AE1BACB3DE003A7EBC /* SMMoviesViewController.m */,
 				127F34DF1BACB786003A7EBC /* SMMovie.h */,
 				127F34E01BACB786003A7EBC /* SMMovie.m */,
+				127F34EF1BACE5DE003A7EBC /* NSURLSession+DownloadFromAddress.h */,
+				127F34EE1BACE5DE003A7EBC /* NSURLSession+DownloadFromAddress.m */,
 				127F34B01BACB3DE003A7EBC /* Main.storyboard */,
+				127F34EB1BACCAA9003A7EBC /* RottenMangoes.storyboard */,
 				127F34B31BACB3DE003A7EBC /* Assets.xcassets */,
 				127F34B51BACB3DE003A7EBC /* LaunchScreen.storyboard */,
 				127F34B81BACB3DE003A7EBC /* Info.plist */,
@@ -152,13 +162,13 @@
 			path = "Sour MangoesUITests";
 			sourceTree = "<group>";
 		};
-		127F34DA1BACB5E7003A7EBC /* Realm Framework */ = {
+		127F34DA1BACB5E7003A7EBC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				127F34DD1BACB705003A7EBC /* libc++.tbd */,
 				127F34DB1BACB5E7003A7EBC /* Realm.framework */,
 			);
-			name = "Realm Framework";
+			name = Frameworks;
 			path = static;
 			sourceTree = "<group>";
 		};
@@ -266,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				127F34B71BACB3DE003A7EBC /* LaunchScreen.storyboard in Resources */,
+				127F34ED1BACCAA9003A7EBC /* RottenMangoes.storyboard in Resources */,
 				127F34B41BACB3DE003A7EBC /* Assets.xcassets in Resources */,
 				127F34B21BACB3DE003A7EBC /* Main.storyboard in Resources */,
 			);
@@ -292,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				127F34F01BACE5DE003A7EBC /* NSURLSession+DownloadFromAddress.m in Sources */,
 				127F34E11BACB786003A7EBC /* SMMovie.m in Sources */,
 				127F34AF1BACB3DE003A7EBC /* SMMoviesViewController.m in Sources */,
 				127F34AC1BACB3DE003A7EBC /* SMAppDelegate.m in Sources */,
@@ -345,6 +357,15 @@
 				127F34B61BACB3DE003A7EBC /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		127F34EB1BACCAA9003A7EBC /* RottenMangoes.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				127F34EC1BACCAA9003A7EBC /* Base */,
+			);
+			name = RottenMangoes.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
