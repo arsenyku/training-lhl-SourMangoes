@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12716A611BAD3B5500CC21E8 /* NSNumber+NumberFromString.m in Sources */ = {isa = PBXBuildFile; fileRef = 12716A5F1BAD3B5500CC21E8 /* NSNumber+NumberFromString.m */; settings = {ASSET_TAGS = (); }; };
+		12716A671BAE17A000CC21E8 /* SMActor.m in Sources */ = {isa = PBXBuildFile; fileRef = 12716A661BAE17A000CC21E8 /* SMActor.m */; settings = {ASSET_TAGS = (); }; };
 		127F34A91BACB3DE003A7EBC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 127F34A81BACB3DE003A7EBC /* main.m */; };
 		127F34AC1BACB3DE003A7EBC /* SMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 127F34AB1BACB3DE003A7EBC /* SMAppDelegate.m */; };
 		127F34AF1BACB3DE003A7EBC /* SMMoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 127F34AE1BACB3DE003A7EBC /* SMMoviesViewController.m */; };
@@ -40,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12716A5F1BAD3B5500CC21E8 /* NSNumber+NumberFromString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+NumberFromString.m"; sourceTree = "<group>"; };
+		12716A601BAD3B5500CC21E8 /* NSNumber+NumberFromString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+NumberFromString.h"; sourceTree = "<group>"; };
+		12716A651BAE17A000CC21E8 /* SMActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMActor.h; sourceTree = "<group>"; };
+		12716A661BAE17A000CC21E8 /* SMActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMActor.m; sourceTree = "<group>"; };
 		127F34A41BACB3DE003A7EBC /* Sour Mangoes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sour Mangoes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		127F34A81BACB3DE003A7EBC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		127F34AA1BACB3DE003A7EBC /* SMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAppDelegate.h; sourceTree = "<group>"; };
@@ -124,6 +130,10 @@
 				127F34AE1BACB3DE003A7EBC /* SMMoviesViewController.m */,
 				127F34DF1BACB786003A7EBC /* SMMovie.h */,
 				127F34E01BACB786003A7EBC /* SMMovie.m */,
+				12716A651BAE17A000CC21E8 /* SMActor.h */,
+				12716A661BAE17A000CC21E8 /* SMActor.m */,
+				12716A601BAD3B5500CC21E8 /* NSNumber+NumberFromString.h */,
+				12716A5F1BAD3B5500CC21E8 /* NSNumber+NumberFromString.m */,
 				127F34EF1BACE5DE003A7EBC /* NSURLSession+DownloadFromAddress.h */,
 				127F34EE1BACE5DE003A7EBC /* NSURLSession+DownloadFromAddress.m */,
 				127F34B01BACB3DE003A7EBC /* Main.storyboard */,
@@ -306,6 +316,8 @@
 				127F34F01BACE5DE003A7EBC /* NSURLSession+DownloadFromAddress.m in Sources */,
 				127F34E11BACB786003A7EBC /* SMMovie.m in Sources */,
 				127F34AF1BACB3DE003A7EBC /* SMMoviesViewController.m in Sources */,
+				12716A611BAD3B5500CC21E8 /* NSNumber+NumberFromString.m in Sources */,
+				12716A671BAE17A000CC21E8 /* SMActor.m in Sources */,
 				127F34AC1BACB3DE003A7EBC /* SMAppDelegate.m in Sources */,
 				127F34A91BACB3DE003A7EBC /* main.m in Sources */,
 			);
@@ -550,6 +562,7 @@
 				127F34D31BACB3DF003A7EBC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		127F34D41BACB3DF003A7EBC /* Build configuration list for PBXNativeTarget "Sour MangoesTests" */ = {
 			isa = XCConfigurationList;
@@ -558,6 +571,7 @@
 				127F34D61BACB3DF003A7EBC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		127F34D71BACB3DF003A7EBC /* Build configuration list for PBXNativeTarget "Sour MangoesUITests" */ = {
 			isa = XCConfigurationList;
@@ -566,6 +580,7 @@
 				127F34D91BACB3DF003A7EBC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

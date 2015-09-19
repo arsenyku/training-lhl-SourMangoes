@@ -29,7 +29,7 @@
     [super viewDidLoad];
 	
     self.moviesPerPage = 50;
-    self.currentPageOfMovies = 0;
+    self.currentPageOfMovies = 1;
     
     
     NSLog(@"%@", [RLMRealmConfiguration defaultConfiguration]);
@@ -37,14 +37,17 @@
     
     NSLog(@"%@", [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]);
 
+    [self loadData];
 }
 
-
+-(void)viewWillDisappear:(BOOL)animated{
+    
+}
 #pragma mark - private
 
 -(void)loadData{
-    
     [NSURLSession downloadFromAddress:self.urlStringWithApiKey completion:^(NSData *data, NSURLResponse *response, NSError *error) {
+
         
         if (error){
             NSLog(@"In Theatres Endpoint Download Error: %@", error);
@@ -59,13 +62,18 @@
             return;
         }
         
-        self.totalNumberOfMovies = [(NSNumber *)inTheatres[ INTHEATRES_MOVIES_KEY ] intValue];
+        self.totalNumberOfMovies = [(NSNumber *)inTheatres[ INTHEATRES_TOTAL_KEY ] intValue];
         NSArray *movies = inTheatres[ INTHEATRES_MOVIES_KEY ];
         
+        self.movies = [[NSMutableArray alloc] init];
         for (NSDictionary *movieData in movies) {
-            [self.movies addObject:[SMMovie movieWithDictionary:movieData]];
+            SMMovie* movie = [[SMMovie alloc] initWithValue:movieData];
+            [self.movies addObject:movie];
+            NSLog(@"saving %@", movie);
+            [self saveMovie:movie];
         }
         
+        NSLog(@"%@", self.movies);
         dispatch_async(dispatch_get_main_queue(), ^ {
             //[self.collectionView reloadData];
             
@@ -74,6 +82,12 @@
         
     }];
     
+}
+
+-(void)saveMovie:(SMMovie*)movie{
+    [[RLMRealm defaultRealm] beginWriteTransaction];
+	[SMMovie createOrUpdateInDefaultRealmWithValue:movie];
+    [[RLMRealm defaultRealm] commitWriteTransaction];
 }
 
 

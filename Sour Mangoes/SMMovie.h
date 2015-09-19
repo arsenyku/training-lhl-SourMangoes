@@ -9,28 +9,28 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <Realm/Realm.h>
-
+#import "SMActor.h"
 
 @interface SMMovie : RLMObject
 
 @property(nonatomic, strong, readonly)NSString* identifier;
 @property(nonatomic, strong, readonly)NSString* title;
-@property(nonatomic, strong, readonly)NSNumber* year;
+@property(nonatomic, assign, readonly)int  year;
 @property(nonatomic, strong, readonly)NSString* mpaaRating;
-@property(nonatomic, strong, readonly)NSNumber* runtimeInMinutes;
+@property(nonatomic, assign, readonly)float runtimeInMinutes;
 @property(nonatomic, strong, readonly)NSString* synopsis;
 @property(nonatomic, strong, readonly)NSString* posterImageAddress;
 @property(nonatomic, strong, readonly)UIImage* posterImage;
-@property(nonatomic, strong, readonly)NSArray* actorNames;
-
--(instancetype)initWithDictionary:(NSDictionary*)data;
-+(instancetype)movieWithDictionary:(NSDictionary*)data;
+@property(nonatomic, strong, readonly)RLMArray<SMActor> * cast;
 
 @end
 
-@protocol SMMovieUpdateDelegate <NSObject>
--(void)movieDataUpdated:(SMMovie*)movie;
+RLM_ARRAY_TYPE(SMMovie)
+
+@protocol SMUpdateDelegate <NSObject>
+-(void)dataUpdated:(id)sender;
 @end
+
 
 
 
