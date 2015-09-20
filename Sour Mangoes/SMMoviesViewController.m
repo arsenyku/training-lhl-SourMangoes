@@ -13,7 +13,7 @@
 #import "SMMovie.h"
 #import "NSURLSession+DownloadFromAddress.h"
 
-@interface SMMoviesViewController ()
+@interface SMMoviesViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic) NSMutableArray *movies;
 
@@ -24,6 +24,8 @@
 @end
 
 @implementation SMMoviesViewController
+
+#pragma mark - lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,6 +45,33 @@
 -(void)viewWillDisappear:(BOOL)animated{
     
 }
+
+
+#pragma mark - Table View
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 1;
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return 0;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"movieCell" forIndexPath:indexPath];
+    
+    [self configureCell:cell atIndexPath:indexPath];
+    
+    return cell;
+}
+
+-(void)configureCell:(UICollectionViewCell*)cell atIndexPath:(NSIndexPath*)indexPath{
+}
+
+
+
+
 #pragma mark - private
 
 -(void)loadData{

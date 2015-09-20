@@ -43,10 +43,6 @@
     return self;
 }
 
-
-
-
-
 -(NSString *)description{
     return [NSString stringWithFormat:@"%@(%@)", self.identifier, self.title];
 }

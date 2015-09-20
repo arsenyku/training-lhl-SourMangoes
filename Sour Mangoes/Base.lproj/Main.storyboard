@@ -92,8 +92,8 @@
                             </collectionViewCell>
                         </cells>
                         <connections>
-                            <outlet property="dataSource" destination="c4Y-rx-I2g" id="EJw-c1-vgA"/>
-                            <outlet property="delegate" destination="c4Y-rx-I2g" id="UYZ-9Y-bOY"/>
+                            <outlet property="dataSource" destination="c4Y-rx-I2g" id="snr-34-eDU"/>
+                            <outlet property="delegate" destination="c4Y-rx-I2g" id="b7Y-6Q-e3S"/>
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="n6B-Gj-oQl"/>
