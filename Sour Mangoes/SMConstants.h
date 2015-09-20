@@ -8,6 +8,8 @@
 
 #define API_KEY @"j9fhnct2tp8wu2q9h75kanh9"
 
+#define HIGH_RES_POSTER_IMAGE_URL @"dkpu1ddg7pbsk.cloudfront.net"
+
 // Rotten Tomatoes In Theatres Endpoint
 #define INTHEATRES_ENDPOINT_URL @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=%@&page_limit=%d&page=%d"
 #define INTHEATRES_MOVIES_KEY @"movies"

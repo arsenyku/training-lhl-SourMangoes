@@ -8,7 +8,7 @@
 
 #import "SMConstants.h"
 #import "SMMovie.h"
-#import "NSNumber+NumberFromString.h"
+#import "NSURLSession+DownloadFromAddress.h"
 
 @interface SMMovie()
 
@@ -22,6 +22,7 @@
 @property(nonatomic, strong)UIImage* posterImage;
 @property(nonatomic, strong)RLMArray<SMActor>* cast;
 
+@property(nonatomic, strong)NSURLSessionTask* downloadTask;
 @end
 
 @implementation SMMovie
@@ -43,9 +44,51 @@
     return self;
 }
 
+-(UIImage*)posterImage{
+    if(_posterImage == nil)
+       [self downloadPosterImage];
+    return _posterImage;
+}
+
 -(NSString *)description{
     return [NSString stringWithFormat:@"%@(%@)", self.identifier, self.title];
 }
+
+-(NSString*)highResPosterImageAddress{
+    NSString *result = self.posterImageAddress;
+    NSRange range = [result rangeOfString:HIGH_RES_POSTER_IMAGE_URL];
+    
+    if (range.location < NSNotFound)
+        result = [NSString stringWithFormat:@"https://%@", [result substringFromIndex:range.location]];
+    else
+        NSLog(@"Unexpected URL for image %@", result);
+    
+    return result;
+
+}
+
+-(void)downloadPosterImage{
+    if (self.downloadTask)
+        return;
+    
+    self.downloadTask =
+    [NSURLSession downloadFromAddress:self.highResPosterImageAddress
+                           completion:^(NSData *data, NSURLResponse *response, NSError *error) {
+                               
+                               if (error)
+                                   NSLog(@"Error while downloading image: %@", error);
+                               
+                               UIImage *downloadedImage = [UIImage imageWithData:data];
+                               self.posterImage = downloadedImage;
+                               
+                               if (self.delegate)
+                                   [self.delegate dataUpdated:self];
+                           }
+     ];
+
+}
+
+
 
 + (NSString *)primaryKey {
     return @"identifier";
@@ -54,9 +97,8 @@
 +(NSArray*)ignoredProperties
 {
     // Must ignore these properties because Realm can't persist them
-    return @[@"posterImage"];
+    return @[@"posterImage", @"delegate", @"downloadTask"];
 }
-
 
 @end
 

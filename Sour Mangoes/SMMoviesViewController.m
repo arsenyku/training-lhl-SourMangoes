@@ -11,9 +11,10 @@
 #import "SMConstants.h"
 #import "SMMoviesViewController.h"
 #import "SMMovie.h"
+#import "SMMovieCellView.h"
 #import "NSURLSession+DownloadFromAddress.h"
 
-@interface SMMoviesViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface SMMoviesViewController () <UICollectionViewDataSource, UICollectionViewDelegate, SMUpdateDelegate>
 
 @property (nonatomic) NSMutableArray *movies;
 
@@ -39,6 +40,8 @@
     
     NSLog(@"%@", [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]);
 
+    self.movies = [[NSMutableArray alloc] init];
+
     [self loadData];
 }
 
@@ -54,7 +57,7 @@
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 0;
+    return [self.movies count];
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -63,13 +66,26 @@
     
     [self configureCell:cell atIndexPath:indexPath];
     
+    if (self.moviesPerPage * self.currentPageOfMovies - 1 <= indexPath.item){
+        [self loadMoreData];
+    }
+    
     return cell;
 }
 
--(void)configureCell:(UICollectionViewCell*)cell atIndexPath:(NSIndexPath*)indexPath{
+-(void)configureCell:(id)cell atIndexPath:(NSIndexPath*)indexPath{
+    SMMovieCellView *movieCell = cell;
+    [movieCell setContent:self.movies[indexPath.item]];
 }
 
 
+#pragma mark - SMUpdateDelegate
+-(void)dataUpdated:(id)sender{
+    dispatch_async(dispatch_get_main_queue(), ^ {
+        [self.collectionView reloadData];
+        
+    });
+}
 
 
 #pragma mark - private
@@ -94,23 +110,33 @@
         self.totalNumberOfMovies = [(NSNumber *)inTheatres[ INTHEATRES_TOTAL_KEY ] intValue];
         NSArray *movies = inTheatres[ INTHEATRES_MOVIES_KEY ];
         
-        self.movies = [[NSMutableArray alloc] init];
         for (NSDictionary *movieData in movies) {
             SMMovie* movie = [[SMMovie alloc] initWithValue:movieData];
+            movie.delegate = self;
             [self.movies addObject:movie];
             NSLog(@"saving %@", movie);
             [self saveMovie:movie];
         }
         
         NSLog(@"%@", self.movies);
-        dispatch_async(dispatch_get_main_queue(), ^ {
-            //[self.collectionView reloadData];
-            
-        });
-        
+
+        [self dataUpdated:self];
         
     }];
     
+}
+
+-(BOOL)moreMoviesAvailable{
+    int downloadedSoFar = self.moviesPerPage * self.currentPageOfMovies;
+    return ( downloadedSoFar < self.totalNumberOfMovies );
+}
+
+-(void)loadMoreData{
+    
+    if ( [self moreMoviesAvailable] ){
+        self.currentPageOfMovies += 1;
+        [self loadData];
+    }
 }
 
 -(void)saveMovie:(SMMovie*)movie{

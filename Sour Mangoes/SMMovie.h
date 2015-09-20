@@ -11,6 +11,11 @@
 #import <Realm/Realm.h>
 #import "SMActor.h"
 
+@protocol SMUpdateDelegate <NSObject>
+-(void)dataUpdated:(id)sender;
+@end
+
+
 @interface SMMovie : RLMObject
 
 @property(nonatomic, strong, readonly)NSString* identifier;
@@ -23,13 +28,11 @@
 @property(nonatomic, strong, readonly)UIImage* posterImage;
 @property(nonatomic, strong, readonly)RLMArray<SMActor> * cast;
 
+
+@property(nonatomic, weak) id<SMUpdateDelegate> delegate;
 @end
 
 RLM_ARRAY_TYPE(SMMovie)
-
-@protocol SMUpdateDelegate <NSObject>
--(void)dataUpdated:(id)sender;
-@end
 
 
 
