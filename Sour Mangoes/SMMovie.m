@@ -51,7 +51,11 @@
 }
 
 -(NSArray*)actorNames{
-    return nil;
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    for (SMActor *actor in self.cast) {
+        [result addObject:actor.name];
+    }
+    return [result copy];
 }
 
 

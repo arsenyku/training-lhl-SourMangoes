@@ -30,6 +30,12 @@
 
 
 @property(nonatomic, weak) id<SMUpdateDelegate> delegate;
+
+/**
+ * Extracts actor names for the movie returns them as an array of strings.
+ * @return Array of strings containing the names of the movie's actors.
+ */
+-(NSArray*)actorNames;
 @end
 
 RLM_ARRAY_TYPE(SMMovie)

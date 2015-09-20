@@ -24,11 +24,11 @@
     [super viewDidLoad];
     
     if (self.movie){
-//        self.titleLabel.text = self.movie.title;
-//        self.castLabel.text = [NSString stringWithFormat:@"Starring: %@",
-//                               [self.movie.actorNames componentsJoinedByString:@", "]];
-//        self.synopsisLabel.text = self.movie.synopsis;
-//        self.movieImageView.image = [self.movie imageWithType:Original];
+        self.titleLabel.text = self.movie.title;
+        self.castLabel.text = [NSString stringWithFormat:@"Starring: %@",
+                               [self.movie.actorNames componentsJoinedByString:@", "]];
+        self.synopsisLabel.text = self.movie.synopsis;
+        self.movieImageView.image = self.movie.posterImage;
     }
 }
 

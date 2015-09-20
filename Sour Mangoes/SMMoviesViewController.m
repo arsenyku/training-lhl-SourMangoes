@@ -10,6 +10,7 @@
 
 #import "SMConstants.h"
 #import "SMMoviesViewController.h"
+#import "SMMovieDetailViewController.h"
 #import "SMMovie.h"
 #import "SMMovieCellView.h"
 #import "NSURLSession+DownloadFromAddress.h"
@@ -51,7 +52,9 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"showDetail"]){
-        
+        SMMovieDetailViewController *detail = (SMMovieDetailViewController*)segue.destinationViewController;
+        SMMovieCellView *cell = sender;
+        detail.movie = cell.movie;
     }
 }
 
