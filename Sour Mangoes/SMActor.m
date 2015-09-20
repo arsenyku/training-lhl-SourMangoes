@@ -27,16 +27,14 @@
     return self;
 }
 
-
 +(NSString *)primaryKey{
     return @"identifier";
 }
 
 
-+ (RLMArray<SMActor>*)actorsWithValue:(id)value{
++ (RLMArray<SMActor>*)actorsWithData:(NSArray*)apiActorData{
     RLMArray<SMActor> *result = [[RLMArray<SMActor> alloc] initWithObjectClassName:[SMActor className]];
-    NSArray *dataForActors = value;
-    for (NSDictionary *dataForActor in dataForActors) {
+    for (NSDictionary *dataForActor in apiActorData) {
         [result addObject:[[SMActor alloc] initWithValue:dataForActor]];
     }
     return result;

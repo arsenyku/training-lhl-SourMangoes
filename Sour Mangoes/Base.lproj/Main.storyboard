@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wfe-Mm-X5f">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -88,6 +89,7 @@
                                     <outlet property="collectionImageView" destination="xoO-yF-S8n" id="MBv-FM-zPf"/>
                                     <outlet property="ratingLabel" destination="zT8-li-ZPu" id="iTk-6L-5bC"/>
                                     <outlet property="titleLabel" destination="QDM-f5-z5P" id="5WV-Rz-2iZ"/>
+                                    <segue destination="ruh-ff-mU9" kind="show" identifier="showDetail" id="5dV-VF-EBl"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -101,6 +103,130 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xpl-CG-LRH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1683" y="-35"/>
+        </scene>
+        <!--Movie Detail View Controller-->
+        <scene sceneID="2AT-zA-mtK">
+            <objects>
+                <viewController id="ruh-ff-mU9" userLabel="Movie Detail View Controller" customClass="SMMovieDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="l1g-rp-AV4"/>
+                        <viewControllerLayoutGuide type="bottom" id="dRU-kX-Scs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="egG-BF-Xo8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X7g-nC-kwP">
+                                <rect key="frame" x="210" y="35" width="374" height="560"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="X7g-nC-kwP" secondAttribute="height" multiplier="2:3" id="K5f-1L-Dlq"/>
+                                </constraints>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="K5f-1L-Dlq"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SbD-Cf-ApX" userLabel="Label1">
+                                <rect key="frame" x="16" y="70" width="184" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tR-Se-KsM" userLabel="Label2">
+                                <rect key="frame" x="16" y="101" width="184" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AiG-P2-Xxq" userLabel="Label3">
+                                <rect key="frame" x="16" y="152" width="184" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="130" id="uLd-bb-z5R"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="X7g-nC-kwP" firstAttribute="height" secondItem="egG-BF-Xo8" secondAttribute="height" constant="-40" id="8lr-eI-Yo6" userLabel="ImageView height"/>
+                            <constraint firstItem="AiG-P2-Xxq" firstAttribute="trailing" secondItem="egG-BF-Xo8" secondAttribute="trailingMargin" id="CsY-IB-BqF" userLabel="Label3 right (narrow)">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstAttribute="centerX" secondItem="SbD-Cf-ApX" secondAttribute="centerX" id="DCC-oP-DKy" userLabel="Label1 centre x"/>
+                            <constraint firstItem="X7g-nC-kwP" firstAttribute="width" secondItem="egG-BF-Xo8" secondAttribute="width" multiplier="1:2" id="Dha-qz-kJh" userLabel="ImageView width (narrow)"/>
+                            <constraint firstAttribute="centerX" secondItem="X7g-nC-kwP" secondAttribute="centerX" id="IoM-s2-BAQ" userLabel="ImageView centre x"/>
+                            <constraint firstItem="AiG-P2-Xxq" firstAttribute="leading" secondItem="SbD-Cf-ApX" secondAttribute="leading" id="PdO-SF-7Rf" userLabel="Label 3 left"/>
+                            <constraint firstItem="SbD-Cf-ApX" firstAttribute="top" secondItem="egG-BF-Xo8" secondAttribute="topMargin" constant="70" id="V83-ab-ZGb" userLabel="Label1 top"/>
+                            <constraint firstItem="SbD-Cf-ApX" firstAttribute="top" secondItem="X7g-nC-kwP" secondAttribute="bottom" constant="30" id="Yex-A0-l6h" userLabel="Label1 top (narrow)"/>
+                            <constraint firstItem="AiG-P2-Xxq" firstAttribute="top" secondItem="6tR-Se-KsM" secondAttribute="bottom" constant="30" id="Z7o-Qw-If5" userLabel="Spacer 2 to 3"/>
+                            <constraint firstItem="SbD-Cf-ApX" firstAttribute="leading" secondItem="egG-BF-Xo8" secondAttribute="leadingMargin" id="bwN-UD-FM6" userLabel="Label1 left"/>
+                            <constraint firstItem="6tR-Se-KsM" firstAttribute="leading" secondItem="SbD-Cf-ApX" secondAttribute="leading" id="ee1-OA-b28" userLabel="Label 2 left"/>
+                            <constraint firstItem="6tR-Se-KsM" firstAttribute="top" secondItem="SbD-Cf-ApX" secondAttribute="bottom" constant="10" id="h8b-bY-sQl" userLabel="Spacer 1 to 2"/>
+                            <constraint firstItem="X7g-nC-kwP" firstAttribute="top" secondItem="egG-BF-Xo8" secondAttribute="top" constant="35" id="h9G-Ab-7bI" userLabel="ImageView top ">
+                                <variation key="heightClass=regular-widthClass=compact" constant="70"/>
+                            </constraint>
+                            <constraint firstItem="SbD-Cf-ApX" firstAttribute="trailing" secondItem="6tR-Se-KsM" secondAttribute="trailing" id="iAe-He-AEp" userLabel="Label1 right"/>
+                            <constraint firstItem="AiG-P2-Xxq" firstAttribute="trailing" secondItem="6tR-Se-KsM" secondAttribute="trailing" id="jdW-BC-KkM" userLabel="Label2 right"/>
+                            <constraint firstItem="6tR-Se-KsM" firstAttribute="leading" secondItem="egG-BF-Xo8" secondAttribute="leadingMargin" id="k2S-BH-PNf" userLabel="Label2 left (narrow)">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="X7g-nC-kwP" firstAttribute="trailing" secondItem="egG-BF-Xo8" secondAttribute="trailingMargin" id="nzi-pe-3Tg" userLabel="ImageView right"/>
+                            <constraint firstItem="AiG-P2-Xxq" firstAttribute="leading" secondItem="egG-BF-Xo8" secondAttribute="leadingMargin" id="rW9-hO-Kh0" userLabel="Label3 left (narrow)">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="AiG-P2-Xxq" firstAttribute="trailing" secondItem="X7g-nC-kwP" secondAttribute="leading" constant="-10" id="vD2-Uz-5K9" userLabel="Label3 right"/>
+                            <constraint firstItem="6tR-Se-KsM" firstAttribute="trailing" secondItem="egG-BF-Xo8" secondAttribute="trailingMargin" id="xPm-LI-aKd" userLabel="Label2 right (narrow)">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="DCC-oP-DKy"/>
+                                <exclude reference="Yex-A0-l6h"/>
+                                <exclude reference="k2S-BH-PNf"/>
+                                <exclude reference="xPm-LI-aKd"/>
+                                <exclude reference="CsY-IB-BqF"/>
+                                <exclude reference="rW9-hO-Kh0"/>
+                                <exclude reference="Dha-qz-kJh"/>
+                                <exclude reference="IoM-s2-BAQ"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="DCC-oP-DKy"/>
+                                <exclude reference="V83-ab-ZGb"/>
+                                <include reference="Yex-A0-l6h"/>
+                                <exclude reference="bwN-UD-FM6"/>
+                                <exclude reference="iAe-He-AEp"/>
+                                <exclude reference="ee1-OA-b28"/>
+                                <include reference="h8b-bY-sQl"/>
+                                <include reference="k2S-BH-PNf"/>
+                                <include reference="xPm-LI-aKd"/>
+                                <include reference="CsY-IB-BqF"/>
+                                <exclude reference="PdO-SF-7Rf"/>
+                                <include reference="Z7o-Qw-If5"/>
+                                <include reference="rW9-hO-Kh0"/>
+                                <exclude reference="vD2-Uz-5K9"/>
+                                <exclude reference="8lr-eI-Yo6"/>
+                                <include reference="Dha-qz-kJh"/>
+                                <include reference="IoM-s2-BAQ"/>
+                                <include reference="h9G-Ab-7bI"/>
+                                <exclude reference="nzi-pe-3Tg"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="rn4-2H-mZw">
+                        <barButtonItem key="rightBarButtonItem" title="Reviews" id="lG1-BV-JMp"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CF1-BR-4jZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2461" y="-35"/>
         </scene>
     </scenes>
 </document>

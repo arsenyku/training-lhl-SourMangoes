@@ -11,9 +11,18 @@
 RLM_ARRAY_TYPE(SMActor)
 
 @interface SMActor : RLMObject
+
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) NSString *name;
 
-+ (RLMArray<SMActor>*)actorsWithValue:(id)value;
+/**
+ * Creates an array of actor objects from a dictionary
+ *
+ * @param "apiActorData" An array of dictionaries containing actor attributes to be mapped
+ * to properties.  Each dictionary in the array represents one actor.
+ *
+ * @return An array of SMActor objects.
+ */
++ (RLMArray<SMActor>*)actorsWithData:(NSArray*)apiActorData;
 @end
 

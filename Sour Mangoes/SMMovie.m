@@ -39,7 +39,7 @@
         _synopsis = movieData[ INTHEATRES_MOVIE_SYNOPSIS_KEY ];
         _posterImageAddress = movieData[ INTHEATRES_MOVIE_POSTERS_KEY ][ INTHEATRES_MOVIE_POSTERS_ORIGINAL_KEY ];
         _posterImage = nil;
-        _cast = [SMActor actorsWithValue:movieData[INTHEATRES_MOVIE_CAST_KEY] ];
+        _cast = [SMActor actorsWithData:movieData[INTHEATRES_MOVIE_CAST_KEY] ];
     }
     return self;
 }
@@ -49,6 +49,12 @@
        [self downloadPosterImage];
     return _posterImage;
 }
+
+-(NSArray*)actorNames{
+    return nil;
+}
+
+
 
 -(NSString *)description{
     return [NSString stringWithFormat:@"%@(%@)", self.identifier, self.title];
