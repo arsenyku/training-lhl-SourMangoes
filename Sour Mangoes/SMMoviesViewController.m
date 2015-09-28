@@ -14,10 +14,14 @@
 #import "SMMovie.h"
 #import "SMMovieCellView.h"
 #import "NSURLSession+DownloadFromAddress.h"
+#import "RLMResults+ArrayConversion.h"
 
 @interface SMMoviesViewController () <UICollectionViewDataSource, UICollectionViewDelegate, SMUpdateDelegate>
 
 @property (nonatomic) NSMutableArray *movies;
+//@property (nonatomic) RLMResults *storedMovies;
+@property (nonatomic) NSMutableDictionary* moviesByMpaaRating;
+
 
 @property (nonatomic) int moviesPerPage;
 @property (nonatomic) int currentPageOfMovies;
@@ -42,7 +46,9 @@
     NSLog(@"%@", [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]);
 
     self.movies = [[NSMutableArray alloc] init];
-
+//    self.storedMovies = nil;
+    self.moviesByMpaaRating = [[NSMutableDictionary alloc] init];
+    
     [self loadData];
 }
 
@@ -62,11 +68,15 @@
 #pragma mark - Table View
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return 1;
+    return [self.moviesByMpaaRating count];
+//    return 1;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return [self.movies count];
+    NSString *sectionKey = [self.moviesByMpaaRating allKeys][section];
+    NSArray *moviesForSection = self.moviesByMpaaRating[sectionKey];
+    return [moviesForSection count];
+//    return [self.movies count];
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -84,7 +94,11 @@
 
 -(void)configureCell:(id)cell atIndexPath:(NSIndexPath*)indexPath{
     SMMovieCellView *movieCell = cell;
-    [movieCell setContent:self.movies[indexPath.item]];
+    NSString *section = [self.moviesByMpaaRating allKeys][indexPath.section];
+    RLMResults *movies = self.moviesByMpaaRating[section];
+    [movieCell setContent:movies[indexPath.item]];
+//    SMMovie *movie = self.movies[indexPath.item];
+//    [movieCell setContent:movie];
 }
 
 
@@ -124,11 +138,15 @@
             movie.delegate = self;
             [self.movies addObject:movie];
             NSLog(@"saving %@", movie);
-            [self saveMovie:movie];
         }
         
+        [self saveMovies];
         NSLog(@"%@", self.movies);
-
+        
+        self.moviesByMpaaRating = [SMMovie moviesGroupedByProperty:@"mpaaRating"];
+        
+//        self.storedMovies = [SMMovie allObjects];
+        
         [self dataUpdated:self];
         
     }];
@@ -148,9 +166,11 @@
     }
 }
 
--(void)saveMovie:(SMMovie*)movie{
+-(void)saveMovies{
     [[RLMRealm defaultRealm] beginWriteTransaction];
-	[SMMovie createOrUpdateInDefaultRealmWithValue:movie];
+    for (SMMovie *movie in self.movies) {
+        [SMMovie createOrUpdateInDefaultRealmWithValue:movie];
+    }
     [[RLMRealm defaultRealm] commitWriteTransaction];
 }
 

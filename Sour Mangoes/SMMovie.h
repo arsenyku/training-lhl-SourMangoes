@@ -36,6 +36,10 @@
  * @return Array of strings containing the names of the movie's actors.
  */
 -(NSArray*)actorNames;
+
+
++ (NSMutableDictionary *)moviesGroupedByProperty:(NSString*)propertyName;
+
 @end
 
 RLM_ARRAY_TYPE(SMMovie)

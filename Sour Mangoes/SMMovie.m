@@ -9,6 +9,7 @@
 #import "SMConstants.h"
 #import "SMMovie.h"
 #import "NSURLSession+DownloadFromAddress.h"
+#import "RLMResults+ArrayConversion.h"
 
 @interface SMMovie()
 
@@ -104,11 +105,31 @@
     return @"identifier";
 }
 
-+(NSArray*)ignoredProperties
++ (NSArray*)ignoredProperties
 {
     // Must ignore these properties because Realm can't persist them
     return @[@"posterImage", @"delegate", @"downloadTask"];
 }
 
+
++ (NSMutableDictionary *)moviesGroupedByProperty:(NSString*)propertyName{
+    
+    NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
+    
+    RLMResults *unsorted = [SMMovie allObjects];
+    NSArray *allRatings = [unsorted valueForKey:propertyName];
+    NSOrderedSet *distinctRatings = [NSOrderedSet orderedSetWithArray:allRatings];
+    NSArray *sectionTitles = [[distinctRatings array] sortedArrayUsingSelector:@selector(compare:)];
+    
+    for (NSString *sectionTitle in sectionTitles) {
+        NSLog(@"%@ == %@", propertyName, sectionTitle);
+        NSPredicate *groupingPredicate = [NSPredicate predicateWithFormat:@"mpaaRating = %@", sectionTitle];
+        RLMResults *moviesForSection = [SMMovie objectsWithPredicate:groupingPredicate];
+
+        //        RLMResults *moviesForSection = [SMMovie objectsWhere:[NSString stringWithFormat:@"%@ = %@", propertyName, @"%@"], sectionTitle];
+        result[ sectionTitle ] = moviesForSection;
+    }
+    return result;
+}
 @end
 
